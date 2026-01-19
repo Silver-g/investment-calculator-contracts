@@ -1,0 +1,33 @@
+syntax = "proto3";
+package auth;//sso
+
+option go_package = "calculator/services/pkg/gen/go/sso;sso";
+
+service Auth{
+    rpc Register (RegisterRequest) returns (RegisterResponse);// почему с большой буквы все названия они публичные? Влияет ли на логику? 
+    rpc Login (LoginRequest) returns (LoginResponse); //что если не указывать ретурнс а написать 2 скобки подряд? Типо что тогда я думаю ошибка
+    rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse); 
+}
+message RegisterRequest {
+    string email = 1; //могут ли тут быть составные или ссылочные типы данных а так же могут ли они быть у структуры вроде да поле структуры может быть даже функцией вроде как
+    string userName = 2;
+    string password = 3;
+}
+message RegisterResponse{
+    int64 id = 1;
+}
+message LoginRequest{
+    string email = 1;
+    string passwor = 2;
+    int64 app_id =3; 
+}
+message LoginResponse {
+    string token = 1;
+}
+message IsAdminRequest {
+    int64 user_id = 1;
+}
+message IsAdminResponse {
+    bool is_admin = 1;
+}
+
