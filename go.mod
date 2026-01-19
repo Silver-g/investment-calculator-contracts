@@ -1,4 +1,4 @@
-module github.com/Silver-g/investment-calculator-protos
+module github.com/Silver-g/investment-calculator-contracts
 
 go 1.25.5
 
